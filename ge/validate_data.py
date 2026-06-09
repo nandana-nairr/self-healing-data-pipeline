@@ -110,5 +110,26 @@ def run_all_validations():
     
     return failed == 0
 
+def run_all_validations_with_results():
+    """Returns list of (check_name, passed) tuples instead of raising."""
+    engine = create_engine(DB_URL)
+    df_orders = pd.read_sql("SELECT * FROM raw_orders", engine)
+    df_payments = pd.read_sql("SELECT * FROM raw_payments", engine)
+
+    gdf_orders = ge.from_pandas(df_orders)
+    gdf_payments = ge.from_pandas(df_payments)
+
+    results = []
+    results.append(("order_id not null", gdf_orders.expect_column_values_to_not_be_null("order_id")["success"]))
+    results.append(("order_id unique", gdf_orders.expect_column_values_to_be_unique("order_id")["success"]))
+    results.append(("customer_id not null", gdf_orders.expect_column_values_to_not_be_null("customer_id")["success"]))
+    results.append(("order_status valid values", gdf_orders.expect_column_values_to_be_in_set("order_status", ["delivered","shipped","canceled","unavailable","invoiced","processing","created","approved"])["success"]))
+    results.append(("table not empty", gdf_orders.expect_table_row_count_to_be_between(min_value=1, max_value=None)["success"]))
+    results.append(("payment order_id not null", gdf_payments.expect_column_values_to_not_be_null("order_id")["success"]))
+    results.append(("payment_value positive", gdf_payments.expect_column_values_to_be_between("payment_value", min_value=0.01, max_value=None)["success"]))
+    results.append(("payment_type valid", gdf_payments.expect_column_values_to_be_in_set("payment_type", ["credit_card","boleto","voucher","debit_card","not_defined"])["success"]))
+
+    return results
+
 if __name__ == "__main__":
     run_all_validations()

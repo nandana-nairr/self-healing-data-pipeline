@@ -33,15 +33,36 @@ def ingest_task(**kwargs):
 def validate_task(**kwargs):
     import sys
     sys.path.insert(0, '/opt/airflow')
-    from ge.validate_data import run_all_validations
-    
+    sys.path.insert(0, 'C:\\Users\\nanda\\OneDrive\\Desktop\\projects\\self-healing-data-pipeline')
+
+    from ge.validate_data import run_all_validations_with_results
+    from ge.recovery_engine import run_recovery
+
     print("Running Great Expectations quality gates...")
-    result = run_all_validations()
-    
-    if not result:
-        raise Exception("Data quality gate failed — pipeline blocked!")
-    
-    print("All quality gates passed ✅")
+    results = run_all_validations_with_results()
+
+    failed_checks = [name for name, passed in results if not passed]
+
+    if not failed_checks:
+        print("✅ All quality gates passed — pipeline proceeding.")
+        return
+
+    print(f"⚠️ {len(failed_checks)} checks failed: {failed_checks}")
+    print("🔧 Invoking recovery engine...")
+
+    report = run_recovery(failed_checks)
+
+    if not report['success']:
+        raise Exception(f"Recovery engine failed — manual intervention needed. Report: {report}")
+
+    print("🔄 Re-running validation after repair...")
+    results2 = run_all_validations_with_results()
+    still_failing = [name for name, passed in results2 if not passed]
+
+    if still_failing:
+        raise Exception(f"Post-repair validation failed: {still_failing}")
+
+    print("✅ Recovery successful — all checks passing. Pipeline continuing.")
     
 def transform_task(**kwargs):
     print("Running dbt models...")
