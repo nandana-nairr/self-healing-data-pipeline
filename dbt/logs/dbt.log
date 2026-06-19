@@ -1,0 +1,270 @@
+[0m19:55:11.792230 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000218E2B08690>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000218DC1A0BD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000218E2A8A150>]}
+
+
+============================== 19:55:11.810350 | 5c4cb316-baeb-4e04-a6b2-c2510420c2c2 ==============================
+[0m19:55:11.810350 [info ] [MainThread]: Running with dbt=1.7.0
+[0m19:55:11.810350 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\nanda\\.dbt', 'version_check': 'True', 'debug': 'False', 'log_path': 'logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'invocation_command': 'dbt init ecommerce', 'static_parser': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m19:55:11.810350 [error] [MainThread]: Encountered an error:
+[ConfigFolderDirectory]: Unable to parse dict {'dir': WindowsPath('C:/Users/nanda/.dbt')}
+[0m19:55:11.886165 [error] [MainThread]: Traceback (most recent call last):
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 608, in _ConvertFieldValuePair
+    _ConvertScalarFieldValue(value, field,
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 779, in _ConvertScalarFieldValue
+    if _UNPAIRED_SURROGATE_PATTERN.search(value):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected string or bytes-like object, got 'WindowsPath'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\events\base_types.py", line 72, in __init__
+    self.pb_msg = ParseDict(kwargs, msg_cls())
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 446, in ParseDict
+    parser.ConvertMessage(js_dict, message, '')
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 487, in ConvertMessage
+    self._ConvertFieldValuePair(value, message, path)
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 622, in _ConvertFieldValuePair
+    raise ParseError(
+google.protobuf.json_format.ParseError: Failed to parse dir field: expected string or bytes-like object, got 'WindowsPath'.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\cli\requires.py", line 90, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\cli\requires.py", line 75, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\cli\main.py", line 515, in init
+    results = task.run()
+              ^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\task\init.py", line 298, in run
+    self.create_profiles_dir(profiles_dir)
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\task\init.py", line 70, in create_profiles_dir
+    fire_event(ConfigFolderDirectory(dir=profiles_dir))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\events\base_types.py", line 81, in __init__
+    raise Exception(error_msg)
+Exception: [ConfigFolderDirectory]: Unable to parse dict {'dir': WindowsPath('C:/Users/nanda/.dbt')}
+
+[0m19:55:11.886165 [debug] [MainThread]: Command `dbt init` failed at 19:55:11.886165 after 0.12 seconds
+[0m19:55:11.891895 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000218DC199710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000218E2A997D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000218E2A9A410>]}
+[0m19:55:11.894043 [debug] [MainThread]: Flushing usage events
+[0m19:58:35.740430 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002373A138050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002373A5A5610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023733BE16D0>]}
+
+
+============================== 19:58:35.750975 | b36543c9-2ad8-4cbc-b45a-5590eabdbcec ==============================
+[0m19:58:35.750975 [info ] [MainThread]: Running with dbt=1.7.0
+[0m19:58:35.753834 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'logs', 'version_check': 'True', 'profiles_dir': 'C:\\Users\\nanda\\.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'invocation_command': 'dbt init ecommerce', 'send_anonymous_usage_stats': 'True'}
+[0m19:58:35.755421 [error] [MainThread]: Encountered an error:
+[ConfigFolderDirectory]: Unable to parse dict {'dir': WindowsPath('C:/Users/nanda/.dbt')}
+[0m19:58:35.766673 [error] [MainThread]: Traceback (most recent call last):
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 608, in _ConvertFieldValuePair
+    _ConvertScalarFieldValue(value, field,
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 779, in _ConvertScalarFieldValue
+    if _UNPAIRED_SURROGATE_PATTERN.search(value):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected string or bytes-like object, got 'WindowsPath'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\events\base_types.py", line 72, in __init__
+    self.pb_msg = ParseDict(kwargs, msg_cls())
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 446, in ParseDict
+    parser.ConvertMessage(js_dict, message, '')
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 487, in ConvertMessage
+    self._ConvertFieldValuePair(value, message, path)
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 622, in _ConvertFieldValuePair
+    raise ParseError(
+google.protobuf.json_format.ParseError: Failed to parse dir field: expected string or bytes-like object, got 'WindowsPath'.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\cli\requires.py", line 90, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\cli\requires.py", line 75, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\cli\main.py", line 515, in init
+    results = task.run()
+              ^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\task\init.py", line 298, in run
+    self.create_profiles_dir(profiles_dir)
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\task\init.py", line 70, in create_profiles_dir
+    fire_event(ConfigFolderDirectory(dir=profiles_dir))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\events\base_types.py", line 81, in __init__
+    raise Exception(error_msg)
+Exception: [ConfigFolderDirectory]: Unable to parse dict {'dir': WindowsPath('C:/Users/nanda/.dbt')}
+
+[0m19:58:35.771617 [debug] [MainThread]: Command `dbt init` failed at 19:58:35.770709 after 0.06 seconds
+[0m19:58:35.771617 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002373A968C50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002373A57A850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002373A57B810>]}
+[0m19:58:35.774811 [debug] [MainThread]: Flushing usage events
+[0m20:00:59.272719 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000178968052D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017896B1F190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017896B06690>]}
+
+
+============================== 20:00:59.279084 | 7b6d88a5-adb2-4d39-aa41-b73780798008 ==============================
+[0m20:00:59.279084 [info ] [MainThread]: Running with dbt=1.5.6
+[0m20:00:59.281048 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'debug': 'False', 'log_path': 'logs', 'version_check': 'True', 'profiles_dir': 'C:\\Users\\nanda\\.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'log_format': 'default', 'static_parser': 'True', 'target_path': 'None', 'send_anonymous_usage_stats': 'True'}
+[0m20:00:59.281048 [error] [MainThread]: Encountered an error:
+[ConfigFolderDirectory]: Unable to parse dict {'dir': WindowsPath('C:/Users/nanda/.dbt')}
+[0m20:00:59.288185 [error] [MainThread]: Traceback (most recent call last):
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 608, in _ConvertFieldValuePair
+    _ConvertScalarFieldValue(value, field,
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 779, in _ConvertScalarFieldValue
+    if _UNPAIRED_SURROGATE_PATTERN.search(value):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected string or bytes-like object, got 'WindowsPath'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\events\base_types.py", line 71, in __init__
+    self.pb_msg = ParseDict(kwargs, msg_cls())
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 446, in ParseDict
+    parser.ConvertMessage(js_dict, message, '')
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 487, in ConvertMessage
+    self._ConvertFieldValuePair(value, message, path)
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 622, in _ConvertFieldValuePair
+    raise ParseError(
+google.protobuf.json_format.ParseError: Failed to parse dir field: expected string or bytes-like object, got 'WindowsPath'.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\cli\requires.py", line 86, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\cli\requires.py", line 71, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\cli\main.py", line 460, in init
+    results = task.run()
+              ^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\task\init.py", line 250, in run
+    self.create_profiles_dir(profiles_dir)
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\task\init.py", line 69, in create_profiles_dir
+    fire_event(ConfigFolderDirectory(dir=profiles_dir))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\events\base_types.py", line 80, in __init__
+    raise Exception(error_msg)
+Exception: [ConfigFolderDirectory]: Unable to parse dict {'dir': WindowsPath('C:/Users/nanda/.dbt')}
+
+[0m20:00:59.289189 [debug] [MainThread]: Command `dbt init` failed at 20:00:59.289189 after 0.04 seconds
+[0m20:00:59.290185 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017896891AD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001789462F4D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000178909D4510>]}
+[0m20:00:59.290185 [debug] [MainThread]: Flushing usage events
+[0m20:10:15.631977 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000010D76B295D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000010D76B29910>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000010D76DED890>]}
+
+
+============================== 20:10:15.641107 | dfd38139-a1cb-46d2-82db-5a796749611c ==============================
+[0m20:10:15.641107 [info ] [MainThread]: Running with dbt=1.5.6
+[0m20:10:15.642113 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'debug': 'False', 'log_path': 'logs', 'profiles_dir': 'C:\\Users\\nanda\\.dbt', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'target_path': 'None', 'send_anonymous_usage_stats': 'True'}
+[0m20:10:15.643113 [error] [MainThread]: Encountered an error:
+[ConfigFolderDirectory]: Unable to parse dict {'dir': WindowsPath('C:/Users/nanda/.dbt')}
+[0m20:10:15.649863 [error] [MainThread]: Traceback (most recent call last):
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 608, in _ConvertFieldValuePair
+    _ConvertScalarFieldValue(value, field,
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 779, in _ConvertScalarFieldValue
+    if _UNPAIRED_SURROGATE_PATTERN.search(value):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected string or bytes-like object, got 'WindowsPath'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\events\base_types.py", line 71, in __init__
+    self.pb_msg = ParseDict(kwargs, msg_cls())
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 446, in ParseDict
+    parser.ConvertMessage(js_dict, message, '')
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 487, in ConvertMessage
+    self._ConvertFieldValuePair(value, message, path)
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 622, in _ConvertFieldValuePair
+    raise ParseError(
+google.protobuf.json_format.ParseError: Failed to parse dir field: expected string or bytes-like object, got 'WindowsPath'.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\cli\requires.py", line 86, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\cli\requires.py", line 71, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\cli\main.py", line 460, in init
+    results = task.run()
+              ^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\task\init.py", line 250, in run
+    self.create_profiles_dir(profiles_dir)
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\task\init.py", line 69, in create_profiles_dir
+    fire_event(ConfigFolderDirectory(dir=profiles_dir))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\events\base_types.py", line 80, in __init__
+    raise Exception(error_msg)
+Exception: [ConfigFolderDirectory]: Unable to parse dict {'dir': WindowsPath('C:/Users/nanda/.dbt')}
+
+[0m20:10:15.652417 [debug] [MainThread]: Command `dbt init` failed at 20:10:15.652417 after 0.04 seconds
+[0m20:10:15.653398 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000010D76B0D1D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000010D76B28FD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000010D76B0D150>]}
+[0m20:10:15.654759 [debug] [MainThread]: Flushing usage events
+[0m20:16:18.758060 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000028E81625C90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000028E81903CD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000028E8132AE10>]}
+
+
+============================== 20:16:18.777927 | ec7b2864-0265-4482-84e8-d2dd16b7495f ==============================
+[0m20:16:18.777927 [info ] [MainThread]: Running with dbt=1.5.6
+[0m20:16:18.780519 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\nanda\\.dbt', 'fail_fast': 'False', 'warn_error': 'None', 'log_path': 'logs', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'target_path': 'None', 'send_anonymous_usage_stats': 'True'}
+[0m20:16:18.781968 [error] [MainThread]: Encountered an error:
+[ConfigFolderDirectory]: Unable to parse dict {'dir': WindowsPath('C:/Users/nanda/.dbt')}
+[0m20:16:18.792661 [error] [MainThread]: Traceback (most recent call last):
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 608, in _ConvertFieldValuePair
+    _ConvertScalarFieldValue(value, field,
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 779, in _ConvertScalarFieldValue
+    if _UNPAIRED_SURROGATE_PATTERN.search(value):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected string or bytes-like object, got 'WindowsPath'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\events\base_types.py", line 71, in __init__
+    self.pb_msg = ParseDict(kwargs, msg_cls())
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 446, in ParseDict
+    parser.ConvertMessage(js_dict, message, '')
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 487, in ConvertMessage
+    self._ConvertFieldValuePair(value, message, path)
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\google\protobuf\json_format.py", line 622, in _ConvertFieldValuePair
+    raise ParseError(
+google.protobuf.json_format.ParseError: Failed to parse dir field: expected string or bytes-like object, got 'WindowsPath'.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\cli\requires.py", line 86, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\cli\requires.py", line 71, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\cli\main.py", line 460, in init
+    results = task.run()
+              ^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\task\init.py", line 250, in run
+    self.create_profiles_dir(profiles_dir)
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\task\init.py", line 69, in create_profiles_dir
+    fire_event(ConfigFolderDirectory(dir=profiles_dir))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nanda\OneDrive\Desktop\projects\self-healing-data-pipeline\venv\Lib\site-packages\dbt\events\base_types.py", line 80, in __init__
+    raise Exception(error_msg)
+Exception: [ConfigFolderDirectory]: Unable to parse dict {'dir': WindowsPath('C:/Users/nanda/.dbt')}
+
+[0m20:16:18.795392 [debug] [MainThread]: Command `dbt init` failed at 20:16:18.794874 after 0.06 seconds
+[0m20:16:18.796021 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000028E816F7610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000028E8160D150>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000028E815FF910>]}
+[0m20:16:18.798029 [debug] [MainThread]: Flushing usage events
